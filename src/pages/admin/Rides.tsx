@@ -165,7 +165,7 @@ export default function AdminRides() {
         </div>
 
         {/* Revenue Card */}
-        <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
+        <Card className="bg-linear-to-r from-green-50 to-emerald-50 border-green-200">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -293,13 +293,13 @@ export default function AdminRides() {
                           </TableCell>
                           <TableCell>
                             <div className="flex items-start space-x-2 max-w-[200px]">
-                              <MapPin className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                              <MapPin className="h-4 w-4 text-green-600 mt-0.5 shrink-0" />
                               <span className="text-sm truncate">{ride.pickupLocation}</span>
                             </div>
                           </TableCell>
                           <TableCell>
                             <div className="flex items-start space-x-2 max-w-[200px]">
-                              <Navigation className="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
+                              <Navigation className="h-4 w-4 text-red-600 mt-0.5 shrink-0" />
                               <span className="text-sm truncate">{ride.dropoffLocation}</span>
                             </div>
                           </TableCell>

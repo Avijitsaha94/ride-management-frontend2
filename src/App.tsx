@@ -84,17 +84,17 @@ function App() {
 
       {/* Rider Routes */}
       <Route
-  path="/rider/dashboard"
-  element={
-    <ProtectedRoute allowedRoles={['USER']}>
-      <RiderDashboard />
-    </ProtectedRoute>
-  }
-/>
+        path="/rider/dashboard"
+        element={
+          <ProtectedRoute allowedRoles={['USER']}>
+            <RiderDashboard />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/rider/request-ride"
         element={
-          <ProtectedRoute allowedRoles={['rider']}>
+          <ProtectedRoute allowedRoles={['USER']}>
             <RiderRequestRide />
           </ProtectedRoute>
         }
@@ -102,7 +102,7 @@ function App() {
       <Route
         path="/rider/active-ride"
         element={
-          <ProtectedRoute allowedRoles={['rider']}>
+          <ProtectedRoute allowedRoles={['USER']}>
             <RiderActiveRide />
           </ProtectedRoute>
         }
@@ -110,7 +110,7 @@ function App() {
       <Route
         path="/rider/rides"
         element={
-          <ProtectedRoute allowedRoles={['rider']}>
+          <ProtectedRoute allowedRoles={['USER']}>
             <RiderRideHistory />
           </ProtectedRoute>
         }
@@ -118,7 +118,7 @@ function App() {
       <Route
         path="/rider/rides/:id"
         element={
-          <ProtectedRoute allowedRoles={['rider']}>
+          <ProtectedRoute allowedRoles={['USER']}>
             <RiderRideDetails />
           </ProtectedRoute>
         }
@@ -126,7 +126,7 @@ function App() {
       <Route
         path="/rider/profile"
         element={
-          <ProtectedRoute allowedRoles={['rider']}>
+          <ProtectedRoute allowedRoles={['USER']}>
             <RiderProfile />
           </ProtectedRoute>
         }
@@ -134,17 +134,17 @@ function App() {
 
       {/* Driver Routes */}
       <Route
-  path="/driver/dashboard"
-  element={
-    <ProtectedRoute allowedRoles={['DRIVER']}>
-      <DriverDashboard />
-    </ProtectedRoute>
-  }
-/>
+        path="/driver/dashboard"
+        element={
+          <ProtectedRoute allowedRoles={['DRIVER']}>
+            <DriverDashboard />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/driver/requests"
         element={
-          <ProtectedRoute allowedRoles={['driver']}>
+          <ProtectedRoute allowedRoles={['DRIVER']}>
             <DriverIncomingRequests />
           </ProtectedRoute>
         }
@@ -152,7 +152,7 @@ function App() {
       <Route
         path="/driver/active-ride"
         element={
-          <ProtectedRoute allowedRoles={['driver']}>
+          <ProtectedRoute allowedRoles={['DRIVER']}>
             <DriverActiveRide />
           </ProtectedRoute>
         }
@@ -160,7 +160,7 @@ function App() {
       <Route
         path="/driver/rides"
         element={
-          <ProtectedRoute allowedRoles={['driver']}>
+          <ProtectedRoute allowedRoles={['DRIVER']}>
             <DriverRideHistory />
           </ProtectedRoute>
         }
@@ -168,7 +168,7 @@ function App() {
       <Route
         path="/driver/earnings"
         element={
-          <ProtectedRoute allowedRoles={['driver']}>
+          <ProtectedRoute allowedRoles={['DRIVER']}>
             <DriverEarnings />
           </ProtectedRoute>
         }
@@ -176,7 +176,7 @@ function App() {
       <Route
         path="/driver/profile"
         element={
-          <ProtectedRoute allowedRoles={['driver']}>
+          <ProtectedRoute allowedRoles={['DRIVER']}>
             <DriverProfile />
           </ProtectedRoute>
         }
@@ -184,17 +184,17 @@ function App() {
 
       {/* Admin Routes */}
       <Route
-  path="/admin/dashboard"
-  element={
-    <ProtectedRoute allowedRoles={['ADMIN']}>
-      <AdminDashboard />
-    </ProtectedRoute>
-  }
-/>
+        path="/admin/dashboard"
+        element={
+          <ProtectedRoute allowedRoles={['ADMIN']}>
+            <AdminDashboard />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/admin/users"
         element={
-          <ProtectedRoute allowedRoles={['admin']}>
+          <ProtectedRoute allowedRoles={['ADMIN']}>
             <AdminUsers />
           </ProtectedRoute>
         }
@@ -202,7 +202,7 @@ function App() {
       <Route
         path="/admin/rides"
         element={
-          <ProtectedRoute allowedRoles={['admin']}>
+          <ProtectedRoute allowedRoles={['ADMIN']}>
             <AdminRides />
           </ProtectedRoute>
         }
@@ -210,7 +210,7 @@ function App() {
       <Route
         path="/admin/analytics"
         element={
-          <ProtectedRoute allowedRoles={['admin']}>
+          <ProtectedRoute allowedRoles={['ADMIN']}>
             <AdminAnalytics />
           </ProtectedRoute>
         }
@@ -218,7 +218,7 @@ function App() {
       <Route
         path="/admin/profile"
         element={
-          <ProtectedRoute allowedRoles={['admin']}>
+          <ProtectedRoute allowedRoles={['ADMIN']}>
             <AdminProfile />
           </ProtectedRoute>
         }
@@ -228,7 +228,7 @@ function App() {
       <Route
         path="/dashboard"
         element={
-          <ProtectedRoute allowedRoles={['rider', 'driver', 'admin']}>
+          <ProtectedRoute allowedRoles={['USER', 'DRIVER', 'ADMIN']}>
             <DashboardRedirect />
           </ProtectedRoute>
         }
@@ -247,11 +247,11 @@ function DashboardRedirect() {
   if (!user) return <Navigate to="/login" />;
 
   switch (user.role) {
-    case 'rider':
+    case 'USER':
       return <Navigate to="/rider/dashboard" />;
-    case 'driver':
+    case 'DRIVER':
       return <Navigate to="/driver/dashboard" />;
-    case 'admin':
+    case 'ADMIN':
       return <Navigate to="/admin/dashboard" />;
     default:
       return <Navigate to="/" />;

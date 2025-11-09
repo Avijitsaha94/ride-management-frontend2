@@ -1,7 +1,7 @@
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Card, CardContent } from '@/components/ui/card';
-import { Target, Eye, Award, Users, Heart, Globe } from 'lucide-react';
+import { Target, Eye, Award, Heart, Globe, Shield } from 'lucide-react';
 
 export default function About() {
   const values = [
@@ -59,7 +59,7 @@ export default function About() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary to-blue-700 text-white py-20">
+      <section className="bg-linear-to-br from-primary to-blue-700 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">About RideNow</h1>

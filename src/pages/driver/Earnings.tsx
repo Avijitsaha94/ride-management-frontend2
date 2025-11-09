@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import { useAppSelector } from '@/store';
 import { useGetDriverRidesQuery } from '@/store/api/rideApi';
@@ -181,6 +182,28 @@ export default function DriverEarnings() {
       color: '#f59e0b',
     },
   ].filter((item) => item.value > 0);
+
+  // Custom label renderer for pie chart
+  const renderCustomLabel = (props: any) => {
+    const { cx, cy, midAngle, innerRadius, outerRadius, percent, name } = props;
+    const RADIAN = Math.PI / 180;
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+      <text
+        x={x}
+        y={y}
+        fill="white"
+        textAnchor={x > cx ? 'start' : 'end'}
+        dominantBaseline="central"
+        className="text-sm font-medium"
+      >
+        {`${name} ${(percent * 100).toFixed(0)}%`}
+      </text>
+    );
+  };
 
   const handleDownloadReport = () => {
     toast.success('Downloading earnings report...');
@@ -380,7 +403,7 @@ export default function DriverEarnings() {
                       cx="50%"
                       cy="50%"
                       labelLine={false}
-                      label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                      label={renderCustomLabel}
                       outerRadius={100}
                       fill="#8884d8"
                       dataKey="value"

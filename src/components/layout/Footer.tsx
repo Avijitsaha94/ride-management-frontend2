@@ -102,17 +102,17 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <MapPin className="h-5 w-5 text-primary mt-0.5 shrink-0" />
                 <span className="text-sm">
                   123 Ride Street, Dhaka 1000, Bangladesh
                 </span>
               </li>
               <li className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-primary flex-shrink-0" />
+                <Phone className="h-5 w-5 text-primary shrink-0" />
                 <span className="text-sm">+880 1234-567890</span>
               </li>
               <li className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-primary flex-shrink-0" />
+                <Mail className="h-5 w-5 text-primary shrink-0" />
                 <span className="text-sm">support@ridenow.com</span>
               </li>
             </ul>
